@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.search-button {
+  background-color: aqua;
+}
+
+.content-view .search-box {
+  padding: 20px 0;
+}
+
+.content-view .content-box {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid rgb(250, 146, 18);
+  border-radius: 10px;
+  background-color: rgb(250, 210, 160);
+  height: 220px;
+  color:black;
+}
+
+.content-view .button-box{
+  margin-top:10px;
+  height: 30px;
+}

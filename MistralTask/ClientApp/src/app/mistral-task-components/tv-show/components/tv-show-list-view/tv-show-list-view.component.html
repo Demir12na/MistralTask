@@ -1,0 +1,25 @@
+<div class="container content-view" *ngIf="loaded">
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+        <div class="search-box">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <input placeholder="Search by term" formControlName="searchByTerm">
+                    <button type="submit" class="search-button">Search</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3" *ngFor="let tvShow of tvShows">
+            <div class="movie-box">
+                <h2>{{tvShow.name}} ({{tvShow.year}})</h2>
+                <h4>Rating: {{tvShow.rating}}</h4>
+                <!-- <div class="button-box">
+                    <button type="button" class="btn btn-danger" (click)="delete(newsRelease.id)">Delete</button>
+                    <button type="button" class="btn btn-primary float-right"
+                        [routerLink]="['/news-releases/update', newsRelease.id]">Update</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
