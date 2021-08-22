@@ -11,6 +11,7 @@ namespace MistralTask.MistralTaskDatabase
         }
         public DbSet<Movies> Movies { get; set; }
         public DbSet<TvShows> TvShows { get; set; }
+        public DbSet<Ratings> Ratings { get; set; }
 
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MistralTask.MistralTaskDatabase;
 
 namespace MistralTask.Migrations
 {
     [DbContext(typeof(MistralTaskDbContext))]
-    partial class MistralTaskDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210822131734_AddOrderInPhotoTable")]
+    partial class AddOrderInPhotoTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,26 +28,11 @@ namespace MistralTask.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("FiveStars")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("FourStars")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OneStars")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("Rating")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("ThreeStars")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TwoStars")
-                        .HasColumnType("int");
+                    b.Property<double?>("Rating")
+                        .HasColumnType("float");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
@@ -98,33 +85,6 @@ namespace MistralTask.Migrations
                     b.ToTable("Photos");
                 });
 
-            modelBuilder.Entity("MistralTask.MistralTaskDatabaseEntities.Ratings", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsMovie")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsTvShow")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("MovieId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Star")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TvShowId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Ratings");
-                });
-
             modelBuilder.Entity("MistralTask.MistralTaskDatabaseEntities.TvShows", b =>
                 {
                     b.Property<int>("Id")
@@ -135,8 +95,8 @@ namespace MistralTask.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal?>("Rating")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double?>("Rating")
+                        .HasColumnType("float");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");

@@ -13,12 +13,21 @@
         <div class="col-xs-12 col-sm-6 col-md-3" *ngFor="let movie of movies; index as i">
             <div *ngIf="counter>i" class="movie-box">
                 <h2>{{movie.name}} ({{movie.year}})</h2>
+                <ng-image-slider [images]="movie.image" #nav></ng-image-slider>
                 <h4>Rating: {{movie.rating}}</h4>
-                <!-- <div class="button-box">
-                    <button type="button" class="btn btn-danger" (click)="delete(newsRelease.id)">Delete</button>
-                    <button type="button" class="btn btn-primary float-right"
-                        [routerLink]="['/news-releases/update', newsRelease.id]">Update</button>
-                </div> -->
+                <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
+                    <li (click)="countStar(star, movie.id)" [ngClass]="{'selected': (star <= selectedValue)}">
+                        <i class="fa fa-star">Star</i>
+                    </li>
+                </ul>
+                <div>
+                    <h4>Total votes {{movie.totalStars}}</h4>
+                    <h6>5 star______________{{movie.fiveStars}}</h6>
+                    <h6>4 star______________{{movie.fourStars}}</h6>
+                    <h6>3 star______________{{movie.threeStars}}</h6>
+                    <h6>2 star______________{{movie.twoStars}}</h6>
+                    <h6>1 star______________{{movie.oneStars}}</h6>
+                </div>
             </div>
         </div>
     </div>

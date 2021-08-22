@@ -25,6 +25,14 @@ namespace MistralTask.MistralTasklEp.Controllers
 
             return res;
         }
+        
+        [HttpPost]
+        public async Task<MovieAddRatingRes> AddRating([FromBody] MovieAddRatingReq req)
+        {
+            MovieAddRatingRes res = await _unitOfWork.Movies.AddRatingAsync(req);
+
+            return res;
+        }
 
     }
 }

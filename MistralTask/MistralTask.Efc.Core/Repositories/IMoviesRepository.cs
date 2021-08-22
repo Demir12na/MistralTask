@@ -7,5 +7,6 @@ namespace MistralTask.MistralTaskEfcCore.Repositories
     public interface IMoviesRepository
     {
         Task<IEnumerable<MovieGetListResItem>> GetListAsync(MovieGetListReq req);
+        Task<MovieAddRatingRes> AddRatingAsync(MovieAddRatingReq req);
     }
 }

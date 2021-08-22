@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MistralTask.MistralTaskDatabase;
 
 namespace MistralTask.Migrations
 {
     [DbContext(typeof(MistralTaskDbContext))]
-    partial class MistralTaskDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210822182303_AddedRatingsTable")]
+    partial class AddedRatingsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,26 +28,11 @@ namespace MistralTask.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("FiveStars")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("FourStars")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OneStars")
-                        .HasColumnType("int");
-
                     b.Property<decimal?>("Rating")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("ThreeStars")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TwoStars")
-                        .HasColumnType("int");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");

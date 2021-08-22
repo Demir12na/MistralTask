@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MovieAddRatingReq } from '../../models/movie-add-rating-req';
+import { MovieAddRatingRes } from '../../models/movie-add-rating-res';
 
 import { MovieGetListResItem } from '../../models/movie-get-list-res-item';
+import { PhotoDto } from '../../models/photo-dto';
 import { MovieApiService } from '../../services/movie-api.service';
 
 @Component({
@@ -17,7 +20,11 @@ export class MovieListViewComponent implements OnInit {
   private _formSubmitet: boolean = false;
   private _filters: any;
   private _searchByTerm: string = "";
-  public counter : number = 10;
+  public counter: number = 10;
+  public photos: Array<PhotoDto>;
+  public stars: number[] = [1, 2, 3, 4, 5];
+  public selectedValue: number;
+  public successfulySaved: boolean = false;
 
   constructor(private _movieApi: MovieApiService,
     private _formBuilder: FormBuilder,) { }
@@ -62,8 +69,20 @@ export class MovieListViewComponent implements OnInit {
     }
   }
 
-  showMore(){
-    this.counter +=10;
+  showMore() {
+    this.counter += 10;
   }
 
+  countStar(star, movieId) {
+    this.selectedValue = star;
+    const req: MovieAddRatingReq = new MovieAddRatingReq(star, movieId);
+    this._movieApi.addRating(req).subscribe(data => {
+      if (data != null || typeof (data) != 'undefined') {
+        this.successfulySaved = true;
+      }
+    })
+    if(this.successfulySaved == true){
+      this.refreshList();
+    }
+  }
 }
